@@ -54,18 +54,18 @@ namespace Classes
 
         }
 
-        public void MakeWithDrawal(decimal amount, DateTime date, string note)
+        public void MakeWithdrawal(decimal amount, DateTime date, string note)
         {
             if (amount <= 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(amount), "Amount of withdrawal must be positive");
             }
-            Transaction? overdraftTransacction = CheckWithdrawalLimit(Balance - amount < _minimumBalance);
-            Transaction? withdrawal = new (-amount, date, note);
+            Transaction? overdraftTransaction = CheckWithdrawalLimit(Balance - amount < _minimumBalance);
+            Transaction? withdrawal = new Transaction(-amount, date, note);
             allTransactions.Add(withdrawal);
-            if (overdraftTransacction != null)
-                allTransactions.Add(overdraftTransacction);
-                    }
+            if (overdraftTransaction != null)
+                allTransactions.Add(overdraftTransaction);
+        }
 
         protected virtual Transaction? CheckWithdrawalLimit(bool isOverdrawn)
         {
