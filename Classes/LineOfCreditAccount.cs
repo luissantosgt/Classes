@@ -20,8 +20,8 @@ namespace MyBankAccount
         }
 
         protected override Transaction CheckWithdrawalLimit(bool isOverdrawn) =>
-        
-            isOverdrawn? new Transaction(-20, DateTime.Now, "Apply Overdraft fee"): default;       
+
+            isOverdrawn ? new Transaction(-20, DateTime.Now, "Apply Overdraft fee") : default;
     }
     
 }
